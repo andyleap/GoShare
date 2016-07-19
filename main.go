@@ -36,6 +36,7 @@ func main() {
 	r.GET("/file/*file", DownloadHandler)
 	r.POST("/upload", UploadHandler)
 	r.GET("/dir/*dir", DirHandler)
+	r.Handler("GET", "/", http.RedirectHandler("/dir/", http.StatusFound))
 
 	r.Handler("GET", "/assets/simplegrid.css", SimpleGrid)
 
